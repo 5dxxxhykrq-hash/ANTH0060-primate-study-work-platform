@@ -1,0 +1,34 @@
+name: Sync ANTH0060 calendars
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sync ANTH0060-only events
+        env:
+          UCL_TIMETABLE_ICS: ${{ secrets.UCL_TIMETABLE_ICS }}
+          MOODLE_CALENDAR_ICS: ${{ secrets.MOODLE_CALENDAR_ICS }}
+        run: python scripts/sync_calendars.py
+      - name: Commit changed calendar data
+        run: |
+          if git diff --quiet; then
+            echo "No calendar changes."
+            exit 0
+          fi
+          git config user.name "anth0060-calendar-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/calendar.json
+          git commit -m "Sync ANTH0060 calendar data"
+          git push
