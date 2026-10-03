@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ANTH0060 Primate Behaviour and Ecology study and research workspace" />
+  <title>Primate Study Work Platform — ANTH0060</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Franklin:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <div class="eyebrow">ANTH0060 · 2026/27</div>
+          <div class="brand-title">Primate Study Work Platform</div>
+        </div>
+      </div>
+
+      <nav class="nav" id="mainNav" aria-label="Main navigation"></nav>
+
+      <div class="sidebar-footer">
+        <div class="source-chip">Source of truth: Moodle / Talis</div>
+        <button class="ghost small" id="exportBtn">Export workspace</button>
+        <label class="ghost small file-label">
+          Import workspace
+          <input id="importInput" type="file" accept="application/json" hidden>
+        </label>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+        <div>
+          <div class="eyebrow" id="sectionEyebrow">Research OS</div>
+          <h1 id="sectionTitle">Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+          <a class="ghost" href="https://rl.talis.com/3/ucl/lists/14081b9e-e363-48fe-be72-368e2e3d1c8b.html?lang=en-GB" target="_blank" rel="noreferrer">UCL Reading List ↗</a>
+        </div>
+      </header>
+
+      <div id="app" class="content" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <template id="modalTemplate">
+    <div class="modal-backdrop">
+      <div class="modal-panel" role="dialog" aria-modal="true">
+        <button class="modal-close" aria-label="Close">×</button>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
